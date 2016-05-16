@@ -1,0 +1,18 @@
+---
+- include: install.yml
+  sudo: true
+  tags:
+    - samba
+    - install
+
+- include: configure.yml
+  sudo: true
+  tags:
+    - samba
+    - configure
+
+- include: ldap.yml
+  sudo: true
+  tags:
+    - samba
+    - ldap

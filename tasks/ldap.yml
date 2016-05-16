@@ -1,0 +1,23 @@
+---
+- name: Install epel
+  yum: state=present name={{ item }}
+  with_items:
+    - epel-release
+
+- name: Install samba
+  yum: state=present name={{ item }}
+  with_items:
+    - epel-release
+    - smbldap-tools
+    - samba-client
+
+- name: Copy smbldap_bind.conf template
+  template: >
+    src=smbldap-tools/smbldap_bind.conf
+    dest=/etc/smbldap-tools/smbldap_bind.conf
+    owner=root
+    group=root
+    mode=0600
+
+- name: Set LDAP root pw
+  shell: smbpasswd -w tqjr4q
