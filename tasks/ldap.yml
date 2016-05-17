@@ -13,11 +13,19 @@
 
 - name: Copy smbldap_bind.conf template
   template: >
-    src=smbldap-tools/smbldap_bind.conf
+    src=smbldap-tools/smbldap_bind.conf.j2
     dest=/etc/smbldap-tools/smbldap_bind.conf
     owner=root
     group=root
     mode=0600
+
+- name: Copy smbldap.conf template
+  template: >
+    src=smbldap-tools/smbldap.conf.j2
+    dest=/etc/smbldap-tools/smbldap.conf
+    owner=root
+    group=root
+    mode=0644
 
 - name: Set LDAP root pw
   shell: smbpasswd -w tqjr4q
